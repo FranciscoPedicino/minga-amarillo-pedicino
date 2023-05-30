@@ -1,8 +1,9 @@
 import React from 'react'
 import { StyleSheet, Text, View,ImageBackground,TouchableOpacity} from 'react-native';
-import hero from '../img/hero-native.png'
-
+import hero from '../assets/img/hero-native.png'
+import { useNavigation } from '@react-navigation/native'
 const index = () => {
+
   return (
     <>
     <ImageBackground source={hero} style={styles.img}>

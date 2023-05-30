@@ -1,10 +1,11 @@
 import React, { useRef } from 'react';
-import { View, Button } from 'react-native';
+import { StyleSheet, Text, View,ImageBackground,TouchableOpacity} from 'react-native';
+
 
 import axios from 'axios'
 
 export default function register() {
-  const MyComponent = () => {
+/*   const MyComponent = () => {
     const email = useRef(null);
     const password = useRef(null);
     const photo = useRef(null);
@@ -31,10 +32,29 @@ export default function register() {
   
           navigate('/');
         });
-    }}
+    }} */
   return (
-    <div>
-      
-    </div>
+    <View style={styles.container2}>
+      <Text style={{color:'red'}}> holaaaaaaaaa</Text>
+    </View>
   )
 }
+
+const styles = StyleSheet.create({
+  container2: {
+    flex: 1,
+    height:100,
+    borderWidth: 1, 
+    borderColor: 'black',
+    alignItems: 'center',
+    justifyContent: 'center',
+    textColor:'white'
+  }
+
+
+
+
+
+})
+
+

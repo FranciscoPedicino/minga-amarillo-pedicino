@@ -1,11 +1,18 @@
 
-import Index from './src/assets/components/index'
-
+import { NavigationContainer } from '@react-navigation/native'
+import ButtomNavigator from './src/navigation/ButtonNavigation'
+import store from './src/store/store'
+import { Provider } from 'react-redux'
 export default function App() {
   return (
-   
-  <Index/>
+   <>
+<Provider store ={store}>
+  <NavigationContainer>
+      <ButtomNavigator/>
+  </NavigationContainer>
+  </Provider>
 
-  );
+ </>
+  )
 }
 
