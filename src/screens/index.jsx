@@ -65,8 +65,11 @@ const index = () => {
       <Image source={candado} style={styles.icon} />
       </View>
     </View>
-    <View style={{flex: 1,flexDirection: 'row', borderColor:'gray',alignItems:'center', justifyContent:'center' ,borderWidth:1,}}>
-    <Text>Don't have an account?</Text>
+    <TouchableOpacity style={{flex:0.3,justifyContent:'center',alignItems:'center',alignContent:'center',backgroundColor:'white',width:100,position:'relative',left:70,borderRadius:5,}}>
+   <Text style={styles.buttonText}>sign in</Text>
+   </TouchableOpacity>
+    <View style={{flex: 0.5,flexDirection: 'row', borderColor:'gray',alignItems:'center', justifyContent:'center' ,borderWidth:1,height:2}}>
+    <Text style={{ fontSize:15,fontWeight:'bold'}}>Don't have an account?</Text>
    <Text onPress={()=>{navigation.navigate('singUp')}} style={styles.buttonText}>sign up</Text>
    </View>
     </View>
@@ -104,24 +107,23 @@ const styles = StyleSheet.create({
     },
     text2:{
       color:'white',
-      fontSize: 15,
+      fontSize: 18,
       width:280,
     },
     button: {
-      marginTop:25,
-      backgroundColor:'#66B2CE',
-      paddingHorizontal: 20,
-      paddingVertical: 10,
-      borderRadius: 5,
+     
+      
     },
     buttonText: {
       color: '#66B2CE',
       fontSize: 16,
       fontWeight: 'bold',
-      marginLeft:10
+      marginLeft:10,
+      alignContent:'center',
+      alignItems:'center'
     },
     input: {
-      width: 200,
+      width: 220,
       height: 40,
       borderWidth: 1,
       paddingHorizontal: 10,
@@ -132,9 +134,8 @@ const styles = StyleSheet.create({
       fontWeight: 'bold',
     },
     fieldContainer: {
-      marginBottom: 10,
+      marginBottom: 5,
       height:70
-    
     },
     form:{
       flex:0.5,
@@ -143,10 +144,10 @@ const styles = StyleSheet.create({
     },
     icon: {
       width: 25,
-      height: 20,
+      height: 25,
       marginLeft: 10,
       position:'absolute',
-      right:70
+      right:50
     }
   })
 export default index
