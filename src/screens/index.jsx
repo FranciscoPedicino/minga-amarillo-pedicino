@@ -39,7 +39,7 @@ const index = () => {
 
     {/* caja2 */}
   <View style={styles.form}>
-    <View style={{backgroundColor:'rgba(255, 255, 255, 0.3)',height:250,width:270 ,justifyContent:'center',borderRadius: 5 }} >
+    <View style={{backgroundColor:'rgba(255, 255, 255, 0.3)',height:300,width:270 ,justifyContent:'center',borderRadius: 5, }} >
     <View style={styles.fieldContainer}>
       <Text style={styles.label}>Email</Text>
       <View style={{ flex: 1,flexDirection: 'row',alignItems:'center',borderWidth: 1,borderColor: 'gray'}}>
@@ -68,7 +68,7 @@ const index = () => {
     <TouchableOpacity style={{flex:0.3,justifyContent:'center',alignItems:'center',alignContent:'center',backgroundColor:'white',width:100,position:'relative',left:70,borderRadius:5,}}>
    <Text style={styles.buttonText}>sign in</Text>
    </TouchableOpacity>
-    <View style={{flex: 0.5,flexDirection: 'row', borderColor:'gray',alignItems:'center', justifyContent:'center' ,borderWidth:1,height:2}}>
+    <View style={{flex: 0.5,flexDirection: 'row', borderColor:'gray',alignItems:'center', justifyContent:'center' ,borderWidth:1,height:2,}}>
     <Text style={{ fontSize:15,fontWeight:'bold'}}>Don't have an account?</Text>
    <Text onPress={()=>{navigation.navigate('singUp')}} style={styles.buttonText}>sign up</Text>
    </View>
