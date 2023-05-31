@@ -11,6 +11,7 @@ import photo2 from '../assets/img/photo.png'
 
 
 
+import { useNavigation } from '@react-navigation/native';
 
 import axios from 'axios'
 
@@ -19,7 +20,8 @@ export default function Register() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [photo, setPhoto] = useState('');
-
+  
+  const navigation=useNavigation()
   const handleEmailChange = (text) => {
     setEmail(text);
   };
@@ -103,7 +105,19 @@ export default function Register() {
 
       </View>
     </View>
-
+    <TouchableOpacity style={{backgroundColor:'white',
+    width:200,
+    borderRadius: 5,
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginTop:50,
+    position:'relative',
+    bottom:25,
+    left:20
+    }}>
+   <Text onPress={()=>{navigation.navigate('Home')}} style={styles.buttonText}>Send</Text>
+   </TouchableOpacity>
     </View>
  
   </ImageBackground> 
@@ -150,7 +164,27 @@ const styles = StyleSheet.create({
     marginLeft: 10,
     position:'absolute',
     right:50
+  },
+  button: {
+    flex: 0.1,
+    width:200,
+    backgroundColor:'black ',
+    borderRadius: 5,
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginTop:50,
+    
+  },
+  buttonText: {
+    color: '#66B2CE',
+    fontSize: 12,
+    fontWeight: 'bold',
+    marginLeft:10,
+    alignContent:'center',
+    alignItems:'center'
   }
+  ,
   
 
 

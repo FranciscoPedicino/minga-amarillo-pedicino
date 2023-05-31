@@ -1,5 +1,5 @@
 import React from 'react'
-import { StyleSheet, Text, View,ImageBackground,TouchableOpacity,ScrollView,Dimensions,TextInput,Image} from 'react-native';
+import { StyleSheet, Text, View,ImageBackground,TouchableOpacity,ScrollView,Dimensions,TextInput,Image,TouchableHighlight,} from 'react-native';
 import email5 from '../assets/img/email5.png'
 import candado from '../assets/img/candado2.png'
 
@@ -25,6 +25,7 @@ const index = () => {
     setPassword(text);
   };
  
+ 
   return (
     <>
     <ScrollView>
@@ -34,7 +35,10 @@ const index = () => {
     <View style={styles.container2}>
    <Text style={styles.text}>For the love of manga</Text>
    <Text style={styles.text2}>"Dive into our manga page and discover an exciting collection of Japanese stories. Explore the fascinating world of manga with us!"</Text>
-
+   <TouchableHighlight
+        style={styles.button}onPress={()=>{navigation.navigate('mangas')}}>
+        <Text style={styles.buttonText}>Explore Mangas</Text>
+      </TouchableHighlight>
     </View>
 
     {/* caja2 */}
@@ -111,16 +115,27 @@ const styles = StyleSheet.create({
       width:280,
     },
     button: {
-     
+      flex: 0.1,
+      width:200,
+      backgroundColor:'white',
+      borderRadius: 5,
+      display: 'flex',
+      justifyContent: 'center',
+      alignItems: 'center',
+      marginTop:50,
       
     },
     buttonText: {
       color: '#66B2CE',
-      fontSize: 16,
+      fontSize: 12,
       fontWeight: 'bold',
       marginLeft:10,
       alignContent:'center',
       alignItems:'center'
+    }
+    ,
+    buttonPressed: {
+      backgroundColor: 'orange',
     },
     input: {
       width: 220,
@@ -148,6 +163,9 @@ const styles = StyleSheet.create({
       marginLeft: 10,
       position:'absolute',
       right:50
-    }
+    },
+    buttonPressed: {
+      backgroundColor: 'orange',
+    },
   })
 export default index

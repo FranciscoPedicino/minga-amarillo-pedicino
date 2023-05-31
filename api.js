@@ -1,5 +1,5 @@
 
-let apiUrl = 'http://localhost:8000/api/'
+let apiUrl = 'https://minga-amarillo-back-xeji.onrender.com/api/'
 
 
 export default apiUrl
