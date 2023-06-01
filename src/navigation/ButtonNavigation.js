@@ -2,6 +2,7 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import Home from  '../screens/index'
 import singUp from '../screens/signUp'
 import Mangas from '../screens/Mangas';
+import ReadMangas from '../screens/ReadMangas';
 
 const Tab = createBottomTabNavigator();
 
@@ -12,6 +13,8 @@ function BottomNavigator() {
     <Tab.Screen  name="Home" component={Home} />
     <Tab.Screen name="singUp" component={singUp} options={{ tabBarVisible: false }}/>
     <Tab.Screen  name="mangas" component={Mangas} />
+    <Tab.Screen  name="readmangas" component={ReadMangas} />
+
 
   </Tab.Navigator>
   );
