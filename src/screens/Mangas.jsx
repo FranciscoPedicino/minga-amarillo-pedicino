@@ -3,7 +3,7 @@ import { StyleSheet, Text, View, ImageBackground, TouchableOpacity, ScrollView, 
 import { useSelector, useDispatch } from "react-redux";
 import { useEffect, useState, useRef } from "react";
 import fondo from '../assets/img/manga_fondo.jpg'
-import goku from '../assets/img/manga2.jpg'
+
 import { Input } from "react-native-elements"
 import Icon from "react-native-vector-icons/FontAwesome"
 
@@ -70,6 +70,7 @@ const Mangas = () => {
             })
     }, [page, reload])
 
+
     return (
         <ScrollView style={styles.container}>
             <ImageBackground source={fondo} style={styles.backgroundimage}>
@@ -80,8 +81,8 @@ const Mangas = () => {
                     Mangas
                 </Text>
                 <Input
-                    style={{ fontSize: 20, width: "100%", padding: 4, borderRadius: 20, backgroundColor: "white" }}
-                    leftIcon={<Icon name="search" size={24} color="pink" />}
+                    style={{ fontSize: 20, width: "100%", padding: 4,marginTop:50, borderRadius: 20, backgroundColor: "white" }}
+                    leftIcon={<Icon name="search" size={24} color="pink" style={{marginTop:50}} />}
                     defaultValue={titleRef.current}
                     placeholder="Find your manga here"
                     onChangeText={(text) => {
@@ -92,12 +93,12 @@ const Mangas = () => {
                 />
             </ImageBackground>
 
-            <View style={{ width: '100%', backgroundColor: 'white', height: 350, marginTop: 68, borderTopLeftRadius: 30, borderTopRightRadius: 30, alignItems: 'center', justifyContent: 'center' }}>
-                <ScrollView style={{ width: '100%', padding: 10 }} >
+            <View style={{ width: '100%', backgroundColor: 'white', height: 900, marginTop: 68, borderTopLeftRadius: 30, borderTopRightRadius: 30, alignItems: 'center', justifyContent: 'center' }}>
+               
                     {mangas.map((each) => {
                         let category = categories.find((c) => c._id === each.category_id);
                         return (
-                            <View style={{ borderWidth: 1, borderRadius: 25, borderColor: 'black', width: '90%', height: 130, flexDirection: 'row', alignItems: 'center', marginTop: 20, backgroundColor: 'green' }}>
+                            <View style={{ borderWidth: 1, borderRadius: 25, borderColor: 'black', width: '90%', height: 130, flexDirection: 'row', alignItems: 'center', marginTop: 20, backgroundColor: '#51375A' }}>
                                 <View style={{
                                     width: '2%',
                                     height: '70%',
@@ -124,9 +125,9 @@ const Mangas = () => {
                             </View>)
                     })}
 
-                </ScrollView>
+
             </View>
-            <View style={{ flex: 1, justifyContent: "center", alignItems: "center", flexDirection:'row' }}>
+            <View style={{ justifyContent: "center", alignItems: "center", flexDirection:'row' }}>
                 {hasPrevPage && (
                     <TouchableOpacity
                         style={{
@@ -171,8 +172,9 @@ const styles = StyleSheet.create({
     backgroundimage: {
         width: '100%',
         flex: 1,
-        height: 200,
+        height:height*1,
         alignItems: 'center',
+
 
     },
     buttonText: {

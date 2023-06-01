@@ -1,7 +1,6 @@
 import React, { useRef } from 'react';
 import { StyleSheet, Text, View,ImageBackground,TouchableOpacity,TextInput,Image} from 'react-native';
 import { useEffect,useState } from 'react';
-import goku from '../assets/img/manga2.jpg'
 import goku2 from '../assets/img/manga15.jpg'
 import goku3 from '../assets/img/manga10.jpg'
 import email5 from '../assets/img/email2.png'
