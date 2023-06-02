@@ -18,6 +18,7 @@ const index = () => {
   const navigation = useNavigation()
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [token, setToken] = useState(null)
 
 
   const handleEmailChange = (text) => {
@@ -48,7 +49,14 @@ const index = () => {
       Alert.alert("Error", "An error occurred while signing in.");
     }
   };
-
+  const checkToken = async () => {
+    try {
+      const storedToken = await AsyncStorage.getItem('token');
+      setToken(storedToken);
+    } catch (error) {
+      console.log(error);
+    }
+  }
   return (
     <>
       <ScrollView>
@@ -65,7 +73,7 @@ const index = () => {
           </View>
 
           {/* caja2 */}
-          {showForm && <View style={styles.form}>
+          {!token && <View style={styles.form}>
             <Text style={{ color: 'white', fontSize: 24, fontWeight: 'bold', textAlign: 'center' }}>Welcome back!</Text>
             <View style={{ backgroundColor: 'rgba(255, 255, 255, 0.6)', height: 300, width: '90%', justifyContent: 'center', alignItems: 'center', borderRadius: 5, marginTop: 30 }} >
               <View style={styles.fieldContainer}>
@@ -94,7 +102,7 @@ const index = () => {
                 </View>
               </View>
               <TouchableOpacity onPress={handleFormSubmit} style={{ flex: 0.3, justifyContent: 'center', alignItems: 'center', alignContent: 'center', backgroundColor: 'white', height: 25, width: 200, borderRadius: 15, marginTop: 10 }}>
-                <Text onPress={() => setShowForm(false)} style={styles.buttonText}>sign in</Text>
+                <Text  style={styles.buttonText}>sign in</Text>
               </TouchableOpacity>
               <View style={{ flex: 0.5, flexDirection: 'row', alignItems: 'center', justifyContent: 'center', height: 2, }}>
                 <Text style={{ fontSize: 15, fontWeight: 'bold' }}>Don't have an account?</Text>

@@ -13,9 +13,7 @@ function BottomNavigator() {
     <Tab.Navigator 
     screenOptions={{ headerShown: false }}>
     <Tab.Screen  name="Home" component={Home} />
-    {!token? <Tab.Screen name="signup" component={singUp} options={{ tabBarVisible: false }}/>:null} 
-    <Tab.Screen  name="mangas" component={Mangas} />
-   {!token?  <Tab.Screen  name="readmangas" component={ReadMangas} />  :null} 
+    <Tab.Screen  name="mangas" component={Mangas} /> 
    <Tab.Screen  name="profile" component={profile} />
 
 

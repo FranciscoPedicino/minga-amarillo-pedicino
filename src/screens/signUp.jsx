@@ -1,6 +1,7 @@
 import React, { useRef } from 'react';
 import { StyleSheet, Text, View, ImageBackground, TouchableOpacity, TextInput, Image, Alert } from 'react-native';
 import { useEffect, useState } from 'react';
+import left from '../assets/img/left.png'
 import goku2 from '../assets/img/manga15.jpg'
 import a from '../assets/img/2.jpg'
 import b from '../assets/img/3.jpg'
@@ -31,6 +32,7 @@ export default function Register() {
   const [password, setPassword] = useState("");
   const [image, setImage] = useState(null);
 
+  
 
 
   function handleForm(e) {
@@ -57,7 +59,7 @@ export default function Register() {
         });
 
 
-        navigation.navigate('')
+        navigation.navigate('Home')
 
       })
 
@@ -121,11 +123,12 @@ export default function Register() {
           </View>
         </View>
         <TouchableOpacity style={{
-          flex: 0.3, justifyContent: 'center', alignItems: 'center', alignContent: 'center', backgroundColor: 'white', height: 25, width: 200, borderRadius: 15, marginTop: 20
+          flex: 0.3, justifyContent: 'center', alignItems: 'center', alignContent: 'center', backgroundColor: 'white', height:40, width: 200, borderRadius: 15, marginTop: 20
         }}>
           <Text onPress={(e) => handleForm(e)} style={styles.buttonText}>Send</Text>
         </TouchableOpacity>
       </View>
+        <Text onPress={() => { navigation.navigate('Home') }} style={styles.buttonText1}>Back</Text>
 
     </ImageBackground>
   )
@@ -173,7 +176,7 @@ const styles = StyleSheet.create({
     right: 5
   },
   button: {
-    flex: 0.1,
+    flex: 0.5,
     width: 200,
     backgroundColor: 'black ',
     borderRadius: 5,
@@ -192,7 +195,19 @@ const styles = StyleSheet.create({
     alignItems: 'center'
   }
   ,
-
+  buttonText1: {
+    color: '#f472b6',
+    fontSize: 10,
+    fontWeight: 'bold',
+    marginLeft: 10,
+    alignContent: 'center',
+    alignItems: 'center',
+    marginTop:20,
+    backgroundColor: 'white',
+    borderRadius: 20,
+    padding: 8
+  }
+  ,
 
 
 

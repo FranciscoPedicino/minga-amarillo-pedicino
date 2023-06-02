@@ -124,15 +124,13 @@ const ReadMangas = () => {
             </View>
 
             {/* BOTONES */}
-            <View style={{ width: '70%', flexDirection: 'row', marginTop: 30, borderWidth: 1, }} >
+            <View style={{ width: '70%', flexDirection: 'row', marginTop: 30,alignItems:'center',justifyContent:'center' }} >
 
-              <TouchableOpacity style={{ flex: 0.5, justifyContent: 'center', alignItems: 'center', alignContent: 'center', backgroundColor: 'red', height: 25, width: '50%', borderRadius: 15, marginTop: 10 }}>
-                <Text onPress={() => setShowMangaContent(true)} style={styles.buttonText}>mangas</Text>
+              <TouchableOpacity style={{ width:'70%', justifyContent: 'center', alignItems: 'center', alignContent: 'center', backgroundColor: '#66B2CE', height: 25, borderRadius: 15, marginTop: 10 }}>
+                <Text onPress={() => navigation.navigate('mangas')} style={styles.buttonText}>mangas</Text>
               </TouchableOpacity>
 
-              <TouchableOpacity style={{ flex: 0.5, justifyContent: 'center', alignItems: 'center', alignContent: 'center', backgroundColor: 'blue', height: 25, width: '50%', borderRadius: 15, marginTop: 10 }}>
-                <Text onPress={() => setShowMangaContent(false)} style={styles.buttonText}>chapters</Text>
-              </TouchableOpacity>
+         
 
             </View>
             <Text style={{ alignItems: 'center', width: '90%', fontSize: 16, marginTop: 20 }}>
@@ -150,7 +148,7 @@ const ReadMangas = () => {
 }
 const styles = StyleSheet.create({
   buttonText: {
-    color: '#66B2CE',
+    color: 'white',
     fontSize: 16,
     fontWeight: 'bold',
     marginLeft: 10,
