@@ -6,7 +6,8 @@ import fondo from '../assets/img/manga_fondo.jpg'
 import fondo2 from '../assets/img/fondo-2.png'
 import { Input } from "react-native-elements"
 import Icon from "react-native-vector-icons/FontAwesome"
-import { useNavigation } from '@react-navigation/native';
+import { useNavigation,useIsFocused } from '@react-navigation/native';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 
 
@@ -28,6 +29,27 @@ const Mangas = () => {
     const [hasPrevPage, setHasPrevPage] = useState(false);
     const [page, setPage] = useState(1)
     const [reload, setReload] = useState(false)
+
+
+
+
+
+    const [token, setToken] = useState(null);
+    const isFocused = useIsFocused();
+  
+    const checkToken = async () => {
+      try {
+        const storedToken = await AsyncStorage.getItem('token');
+        setToken(storedToken);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+  
+    useEffect(() => {
+      checkToken();
+    }, [isFocused])
+
 
     useEffect(() => {
         axios(apiUrl + "mangas")
@@ -74,9 +96,12 @@ const Mangas = () => {
             })
     }, [page, reload])
 
+    
 
     return (
         <ScrollView style={styles.container}>
+            {token ? (
+      <>
             <ImageBackground source={fondo2} style={styles.backgroundimage}>
                 <Text style={{
                     fontWeight: 'bold', fontSize: 30, color: 'white', backgroundColor: '', justifyContent: 'center',
@@ -97,12 +122,22 @@ const Mangas = () => {
                 />
             </ImageBackground>
 
-            <View style={{ width: '100%', backgroundColor: 'white', height: 900, marginTop: 68, borderTopLeftRadius: 30, borderTopRightRadius: 30, alignItems: 'center', justifyContent: 'center' }}>
+            <View style={{ width: '100%', backgroundColor: 'white', height: 900, marginTop: 68, borderTopLeftRadius: 30, borderTopRightRadius: 30, alignItems: 'center'}}>
 
                 {mangas.map((each) => {
                     let category = categories.find((c) => c._id === each.category_id);
                     return (
-                        <View style={{ borderWidth: 1, borderRadius: 25, borderColor: 'black', width: '90%', height: 130, flexDirection: 'row', alignItems: 'center', marginTop: 20 }}>
+                        <View style={{
+                            borderRadius: 25, borderColor: 'black', width: '90%', height: 120, flexDirection: 'row', alignItems: 'center', marginTop: 40, backgroundColor: '#F8FAFC'
+                            , shadowColor: '#005',
+                            shadowOffset: {
+                                width: 0,
+                                height: 2,
+                            },
+                            shadowOpacity: 0.5,
+                            shadowRadius: 3.84,
+                            elevation: 80,
+                        }}>
                             <View style={{
                                 width: '2%',
                                 height: '70%',
@@ -140,8 +175,10 @@ const Mangas = () => {
                             borderWidth: 1,
                             borderRadius: 18,
                             backgroundColor: "#f472b6",
-                            padding: 16,
+                            padding: 10,
                             marginRight: 8,
+                            marginTop: 80
+
                         }}
                         onPress={prev}
                     >
@@ -155,7 +192,9 @@ const Mangas = () => {
                             borderWidth: 1,
                             borderRadius: 18,
                             backgroundColor: "#66B2CE",
-                            padding: 16,
+                            padding: 10,
+                            marginTop:80
+
                         }}
                         onPress={next}
                     >
@@ -163,6 +202,8 @@ const Mangas = () => {
                     </TouchableOpacity>
                 )}
             </View>
+            </>
+            ) : <Text>no te has registrado </Text>}
         </ScrollView>
     )
 }

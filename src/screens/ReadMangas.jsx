@@ -28,6 +28,7 @@ const ReadMangas = () => {
 
   let storeManga = useSelector(store => store.manga)
   let storeChapter = useSelector(store => store.chapter)
+  const [categories, setCategories] = useState([])
 
   let [mangas, setMangas] = useState([])
   let [chapters, setChapters] = useState([{ data: [], totalPages: 1 }])
@@ -70,8 +71,17 @@ const ReadMangas = () => {
       .catch(err => console.log(err))
   },
     [id, pageChange, reload]
-  )
 
+  )
+  useEffect(() => {
+
+    axios(apiUrl + "categories")
+      .then((res) => setCategories(res.data.categories))
+      .catch((err) => console.log(err));
+  }, [])
+  console.log(categories);
+
+  let category = categories.find((c) => c._id === mangas.category_id)
 
 
 
@@ -79,44 +89,58 @@ const ReadMangas = () => {
   return (
     <>
       {showMangaContent ? (
-        < ScrollView style={{ width: '100%', flex: 1, borderBottomWidth: 1, borderBottomColor: 'red' }}>
-        <View style={{alignItems:'center'}}>
-       
-        <View style={{ height: '60%', borderWidth: 1, width: '90%', alignItems: 'center', marginTop: 20 }}>
-          <Image source={mangas?.cover_photo} style={{ width: '90%', height: '90%',borderRadius:20 }}></Image>
-          <Text style={{marginTop:10,fontSize:24}}>{mangas.title}</Text>
-        </View>
-        <View style={{ width: '90% ', flex: 0.3, justifyContent: 'space-between', alignItems: 'center', flexDirection: 'row', borderWidth: 1, marginTop:30 }}>
-          <Text style={{ backgroundColor: 'red',fontWeight:'bold'  }}>{mangas.category_id?.name}</Text>
-          <Text style={{fontWeight:'bold' }}>{mangas?.author_id?.name}</Text>
-        </View>
-        <View style={{ width: '90%', height: 50, borderBottomWidth: 1,borderRadius:20 ,backgroundColor: 'green', flexDirection: 'row', justifyContent: 'space-around',marginTop:40 }}>
-          <Image source={finger1} style={{ height: 50, width: 50 }} ></Image>
-          <Image source={finger2} style={{ height: 50, width: 50 }} ></Image>
-          <Image source={sorprendido} style={{ height: 50, width: 50 }} ></Image>
-          <Image source={love} style={{ height: 50, width: 50 }} ></Image>
+        < ScrollView style={{ width: '100%', flex: 1 }}>
+          <View style={{ alignItems: 'center' }}>
+
+            <View style={{ height: '60%', width: '90%', alignItems: 'center', marginTop: 20 }}>
+              <Image source={mangas?.cover_photo} style={{ width: '90%', height: '90%', borderRadius: 20 }}></Image>
+              <Text style={{ marginTop: 10, fontSize: 24 }}>{mangas.title}</Text>
+            </View>
+            <View style={{ width: '90% ', flex: 0.3, justifyContent: 'space-between', alignItems: 'center', flexDirection: 'row', marginTop: 30 }}>
+              <Text style={{
+                backgroundColor: category ? category?.color : null,
+                fontWeight: 'bold'
+              }}>{mangas.category_id?.name}
+              </Text>
+              <Text style={{ fontWeight: 'bold' }}>{mangas?.author_id?.name}</Text>
+            </View>
+            <View style={{
+              width: '90%', height: 50, borderRadius: 20, backgroundColor: '#F8FAFC', flexDirection: 'row', justifyContent: 'space-around', marginTop: 40
+              , shadowColor: '#005',
+              shadowOffset: {
+                width: 0,
+                height: 2,
+              },
+              shadowOpacity: 0.5,
+              shadowRadius: 3.84,
+              elevation: 80,
+            }}>
+              <Image source={finger1} style={{ height: 50, width: 50 }} ></Image>
+              <Image source={finger2} style={{ height: 50, width: 50 }} ></Image>
+              <Image source={sorprendido} style={{ height: 50, width: 50 }} ></Image>
+              <Image source={love} style={{ height: 50, width: 50 }} ></Image>
 
 
-        </View>
+            </View>
 
-        {/* BOTONES */}
-        <View style={{ width: '70%', flexDirection: 'row', marginTop: 30, borderWidth: 1, }} >
+            {/* BOTONES */}
+            <View style={{ width: '70%', flexDirection: 'row', marginTop: 30, borderWidth: 1, }} >
 
-          <TouchableOpacity style={{ flex: 0.5, justifyContent: 'center', alignItems: 'center', alignContent: 'center', backgroundColor: 'red', height: 25, width: '50%', borderRadius: 15, marginTop: 10 }}>
-            <Text onPress={() => setShowMangaContent(true)} style={styles.buttonText}>mangas</Text>
-          </TouchableOpacity>
+              <TouchableOpacity style={{ flex: 0.5, justifyContent: 'center', alignItems: 'center', alignContent: 'center', backgroundColor: 'red', height: 25, width: '50%', borderRadius: 15, marginTop: 10 }}>
+                <Text onPress={() => setShowMangaContent(true)} style={styles.buttonText}>mangas</Text>
+              </TouchableOpacity>
 
-          <TouchableOpacity style={{ flex: 0.5, justifyContent: 'center', alignItems: 'center', alignContent: 'center', backgroundColor: 'blue', height: 25, width: '50%', borderRadius: 15, marginTop: 10 }}>
-            <Text onPress={() => setShowMangaContent(false)} style={styles.buttonText}>chapters</Text>
-          </TouchableOpacity>
+              <TouchableOpacity style={{ flex: 0.5, justifyContent: 'center', alignItems: 'center', alignContent: 'center', backgroundColor: 'blue', height: 25, width: '50%', borderRadius: 15, marginTop: 10 }}>
+                <Text onPress={() => setShowMangaContent(false)} style={styles.buttonText}>chapters</Text>
+              </TouchableOpacity>
 
-        </View>
-        <Text style={{alignItems:'center',width:'90%',fontSize:16,marginTop:20}}>
-          {mangas.description}
-        </Text>
+            </View>
+            <Text style={{ alignItems: 'center', width: '90%', fontSize: 16, marginTop: 20 }}>
+              {mangas.description}
+            </Text>
 
-        </View>
-      </ ScrollView>
+          </View>
+        </ ScrollView>
       ) : (
         <></>
       )}
