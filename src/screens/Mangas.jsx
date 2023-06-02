@@ -17,7 +17,7 @@ import apiUrl from '../../api';
 
 
 const Mangas = () => {
-  const navigation=useNavigation()
+    const navigation = useNavigation()
 
     const titleRef = useRef("");
     const categoryRef = useRef([]);
@@ -36,7 +36,7 @@ const Mangas = () => {
     }, [])
     console.log(mangas);
     useEffect(() => {
-    
+
         axios(apiUrl + "categories")
             .then((res) => setCategories(res.data.categories))
             .catch((err) => console.log(err));
@@ -54,14 +54,14 @@ const Mangas = () => {
     }
     const captureText = () => {
         setReload(!reload);
-      };
+    };
     useEffect(() => {
         let categories = Object.values(categoryRef.current);
         let values = [];
         categories.forEach((each) => {
-          if (each.checked) {
-            values.push(each.value);
-          }
+            if (each.checked) {
+                values.push(each.value);
+            }
         })
         axios(
             apiUrl +
@@ -85,8 +85,8 @@ const Mangas = () => {
                     Mangas
                 </Text>
                 <Input
-                    style={{ fontSize: 20, width: "100%", padding: 4,marginTop:70, borderRadius: 20, backgroundColor: "white" }}
-                    leftIcon={<Icon name="search" size={24} color="pink" style={{marginTop:70}} />}
+                    style={{ fontSize: 20, width: "100%", padding: 4, marginTop: 70, borderRadius: 20, backgroundColor: "white" }}
+                    leftIcon={<Icon name="search" size={24} color="pink" style={{ marginTop: 70 }} />}
                     defaultValue={titleRef.current}
                     placeholder="Find your manga here"
                     onChangeText={(text) => {
@@ -98,41 +98,41 @@ const Mangas = () => {
             </ImageBackground>
 
             <View style={{ width: '100%', backgroundColor: 'white', height: 900, marginTop: 68, borderTopLeftRadius: 30, borderTopRightRadius: 30, alignItems: 'center', justifyContent: 'center' }}>
-               
-                    {mangas.map((each) => {
-                        let category = categories.find((c) => c._id === each.category_id);
-                        return (
-                            <View style={{ borderWidth: 1, borderRadius: 25, borderColor: 'black', width: '90%', height: 130, flexDirection: 'row', alignItems: 'center', marginTop: 20 }}>
-                                <View style={{
-                                    width: '2%',
-                                    height: '70%',
-                                    backgroundColor: category ? category.color : null,
+
+                {mangas.map((each) => {
+                    let category = categories.find((c) => c._id === each.category_id);
+                    return (
+                        <View style={{ borderWidth: 1, borderRadius: 25, borderColor: 'black', width: '90%', height: 130, flexDirection: 'row', alignItems: 'center', marginTop: 20 }}>
+                            <View style={{
+                                width: '2%',
+                                height: '70%',
+                                backgroundColor: category ? category.color : null,
+                                justifyContent: 'center',
+                                alignItems: 'center',
+                                alignContent: 'center',
+                                marginLeft: 2
+                            }}>
+                            </View>
+                            <View style={{ width: '63%', height: '70%', justifyContent: 'center', alignItems: 'center', gap: 30 }}>
+                                <Text style={{ fontSize: 16 }}> {each.title}</Text>
+                                <TouchableOpacity style={{
+                                    backgroundColor: '#66B2CE',
+                                    width: 90,
+                                    borderRadius: 15,
+                                    display: 'flex',
                                     justifyContent: 'center',
                                     alignItems: 'center',
-                                    alignContent: 'center',
-                                    marginLeft:2
                                 }}>
-                                </View>
-                                <View style={{ width: '63%', height: '70%', justifyContent: 'center', alignItems: 'center', gap: 30 }}>
-                                    <Text style={{ fontSize: 16 }}> {each.title}</Text>
-                                    <TouchableOpacity style={{
-                                        backgroundColor: '#66B2CE',
-                                        width: 90,
-                                        borderRadius: 15,
-                                        display: 'flex',
-                                        justifyContent: 'center',
-                                        alignItems: 'center',
-                                    }}>
-                                        <Text onPress={() => navigation.navigate("readmangas", { id:`${each._id}`})} style={[styles.buttonText, { lineHeight: 30 }]}>Read</Text>
-                                    </TouchableOpacity>
-                                </View>
-                                <Image source={each.cover_photo} style={{ height: '100%', width: '35%', borderBottomLeftRadius: 40, borderTopLeftRadius: 40, borderBottomRightRadius: 23, borderTopRightRadius: 23 }}></Image>
-                            </View>)
-                    })}
+                                    <Text onPress={() => navigation.navigate("readmangas", { id: `${each._id}` })} style={[styles.buttonText, { lineHeight: 30 }]}>Read</Text>
+                                </TouchableOpacity>
+                            </View>
+                            <Image source={each.cover_photo} style={{ height: '100%', width: '35%', borderBottomLeftRadius: 40, borderTopLeftRadius: 40, borderBottomRightRadius: 23, borderTopRightRadius: 23 }}></Image>
+                        </View>)
+                })}
 
 
             </View>
-            <View style={{ justifyContent: "center", alignItems: "center", flexDirection:'row' }}>
+            <View style={{ justifyContent: "center", alignItems: "center", flexDirection: 'row' }}>
                 {hasPrevPage && (
                     <TouchableOpacity
                         style={{
@@ -177,7 +177,7 @@ const styles = StyleSheet.create({
     backgroundimage: {
         width: '100%',
         flex: 1,
-        height:height*1,
+        height: height * 1,
         alignItems: 'center',
 
 

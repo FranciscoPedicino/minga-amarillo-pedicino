@@ -78,16 +78,19 @@ const ReadMangas = () => {
   let [showMangaContent, setShowMangaContent] = useState(true);
   return (
     <>
-      {showMangaContent ? (<View style={{ width: '100%', alignItems: 'center', flex: 1, borderBottomWidth: 1, borderBottomColor: 'red' }}>
-        <View style={{ height: '50%', borderWidth: 1, width: '90%', alignItems: 'center', marginTop: 20 }}>
-          <Image source={mangas?.cover_photo} style={{ width: '90%', height: '90%' }}></Image>
-          <Text>{mangas.title}</Text>
+      {showMangaContent ? (
+        < ScrollView style={{ width: '100%', flex: 1, borderBottomWidth: 1, borderBottomColor: 'red' }}>
+        <View style={{alignItems:'center'}}>
+       
+        <View style={{ height: '60%', borderWidth: 1, width: '90%', alignItems: 'center', marginTop: 20 }}>
+          <Image source={mangas?.cover_photo} style={{ width: '90%', height: '90%',borderRadius:20 }}></Image>
+          <Text style={{marginTop:10,fontSize:24}}>{mangas.title}</Text>
         </View>
-        <View style={{ width: '90% ', flex: 0.3, justifyContent: 'space-between', alignItems: 'center', flexDirection: 'row', borderWidth: 1, marginTop: 10 }}>
-          <Text style={{ backgroundColor: 'red' }}>{mangas.category_id?.name}</Text>
-          <Text>{mangas?.author_id?.name}</Text>
+        <View style={{ width: '90% ', flex: 0.3, justifyContent: 'space-between', alignItems: 'center', flexDirection: 'row', borderWidth: 1, marginTop:30 }}>
+          <Text style={{ backgroundColor: 'red',fontWeight:'bold'  }}>{mangas.category_id?.name}</Text>
+          <Text style={{fontWeight:'bold' }}>{mangas?.author_id?.name}</Text>
         </View>
-        <View style={{ width: '90%', height: 50, borderBottomWidth: 1, backgroundColor: 'green', flexDirection: 'row', justifyContent: 'space-around' }}>
+        <View style={{ width: '90%', height: 50, borderBottomWidth: 1,borderRadius:20 ,backgroundColor: 'green', flexDirection: 'row', justifyContent: 'space-around',marginTop:40 }}>
           <Image source={finger1} style={{ height: 50, width: 50 }} ></Image>
           <Image source={finger2} style={{ height: 50, width: 50 }} ></Image>
           <Image source={sorprendido} style={{ height: 50, width: 50 }} ></Image>
@@ -97,7 +100,7 @@ const ReadMangas = () => {
         </View>
 
         {/* BOTONES */}
-        <View style={{ width: '70%', flexDirection: 'row', marginTop: 20, borderWidth: 1, }} >
+        <View style={{ width: '70%', flexDirection: 'row', marginTop: 30, borderWidth: 1, }} >
 
           <TouchableOpacity style={{ flex: 0.5, justifyContent: 'center', alignItems: 'center', alignContent: 'center', backgroundColor: 'red', height: 25, width: '50%', borderRadius: 15, marginTop: 10 }}>
             <Text onPress={() => setShowMangaContent(true)} style={styles.buttonText}>mangas</Text>
@@ -108,9 +111,13 @@ const ReadMangas = () => {
           </TouchableOpacity>
 
         </View>
+        <Text style={{alignItems:'center',width:'90%',fontSize:16,marginTop:20}}>
+          {mangas.description}
+        </Text>
 
-
-      </View>) : (
+        </View>
+      </ ScrollView>
+      ) : (
         <></>
       )}
 
