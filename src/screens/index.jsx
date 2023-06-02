@@ -12,14 +12,19 @@ import { useEffect, useState } from 'react';
 import axios from "axios";
 import apiUrl from "../../api";
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import { useNavigation } from '@react-navigation/native';
+import { useNavigation,useIsFocused } from '@react-navigation/native'
 
 const index = () => {
   const navigation = useNavigation()
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [token, setToken] = useState(null)
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const isFocused = useIsFocused();
 
+  useEffect(() => {
+    checkToken();
+  }, [isFocused]);
 
   const handleEmailChange = (text) => {
     setEmail(text);
@@ -44,6 +49,8 @@ const index = () => {
 
       // Redirigir al usuario a la pantalla de inicio (Home)
       navigation.navigate("Home");
+      setIsLoggedIn(true)
+      
     } catch (error) {
       console.log(error);
       Alert.alert("Error", "An error occurred while signing in.");
@@ -73,7 +80,7 @@ const index = () => {
           </View>
 
           {/* caja2 */}
-          {!token && <View style={styles.form}>
+          {!token &&!isLoggedIn && <View style={styles.form}>
             <Text style={{ color: 'white', fontSize: 24, fontWeight: 'bold', textAlign: 'center' }}>Welcome back!</Text>
             <View style={{ backgroundColor: 'rgba(255, 255, 255, 0.6)', height: 300, width: '90%', justifyContent: 'center', alignItems: 'center', borderRadius: 5, marginTop: 30 }} >
               <View style={styles.fieldContainer}>
