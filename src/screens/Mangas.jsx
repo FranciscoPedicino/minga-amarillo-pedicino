@@ -8,11 +8,16 @@ import { Input } from "react-native-elements"
 import Icon from "react-native-vector-icons/FontAwesome"
 import { useNavigation, useIsFocused } from '@react-navigation/native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import b from '../assets/img/3.jpg'
+import pensando from '../assets/img/pensando.jpg'
+import pensando1 from '../assets/img/pensado-1.jpg'
+
 
 
 
 import axios from 'axios'
 import apiUrl from '../../api';
+import { BackgroundImage } from 'react-native-elements/dist/config';
 
 
 
@@ -203,13 +208,26 @@ const Mangas = () => {
                         )}
                     </View>
                 </>
-            ) : <View>
+            ) :
 
-                <Text>
+                <BackgroundImage source={pensando1} style={{ height: 433, width: '100%', backgroundColor: 'green' }}>
 
-                </Text>
+                    <View style={{ height: '50%', width: '100%', justifyContent: 'center', alignItems: 'center'}}>
+                        <Text style={{fontSize:20,color:'black',fontWeight:'bold',backgroundColor: 'rgba(255, 255, 255, 0.8)' }}> you have not registered</Text>
+                        <TouchableOpacity style={{ width: '70%', justifyContent: 'center', alignItems: 'center', alignContent: 'center', backgroundColor: '#66B2CE', height: 25, borderRadius: 15, marginTop: 10 }}>
+                            <Text onPress={() => navigation.navigate('signup')} style={styles.buttonText}>Mangas</Text>
+                        </TouchableOpacity>
+                    </View>
 
-            </View>}
+                    <View style={{ height: '50%', width: '100%', justifyContent: 'center', alignItems: 'center'}}>
+                        <Text style={{fontSize:20,color:'black',fontWeight:'bold',backgroundColor: 'rgba(255, 255, 255, 0.4)' }}> you have not logged in</Text>
+                        <TouchableOpacity style={{ width: '70%', justifyContent: 'center', alignItems: 'center', alignContent: 'center', backgroundColor: '#66B2CE', height: 25, borderRadius: 15, marginTop: 10 }}>
+                            <Text onPress={() => navigation.navigate('Home')} style={styles.buttonText}>Sign in</Text>
+                        </TouchableOpacity>
+                    </View>
+
+                </BackgroundImage>
+            }
         </ScrollView>
     )
 }
@@ -232,6 +250,7 @@ const styles = StyleSheet.create({
     buttonText: {
         color: 'white',
         height: 30,
+        fontWeight:'bold'
     }
 
 })

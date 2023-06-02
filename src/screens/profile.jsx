@@ -2,6 +2,7 @@ import React from 'react'
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { useNavigation,useIsFocused } from '@react-navigation/native';
 import { useEffect, useState, useRef } from "react";
+import b from '../assets/img/manga15.jpg'
 
 import { StyleSheet, Text, View, ImageBackground, TouchableOpacity, ScrollView, Dimensions, TextInput, Image, TouchableHighlight, } from 'react-native';
 
@@ -45,21 +46,31 @@ const profile = () => {
 }
 
   return (
-    <View style={styles.container}>
+    <ImageBackground source={b} style={styles.container}>
         <Image></Image>
-        <Text>email</Text>
-        <TouchableOpacity onPress={logout}>
-        <Text>logout</Text>
+        <Text style={{fontSize:15,fontWeight:'bold',color:'black',backgroundColor: 'rgba(255, 255, 255, 0.6)',borderRadius:12,padding:20,width:'50%',height:5, textAlign: 'center',marginBottom:30}}>email</Text>
+        <TouchableOpacity onPress={logout} style={{ flex: 0.1, justifyContent: 'center', alignItems: 'center', alignContent: 'center', backgroundColor: 'white', height: 25, width: 200, borderRadius: 15, marginTop: 10 }}>
+        <Text style={styles.buttonText}>logout</Text>
         </TouchableOpacity>
       
-    </View>
+    </ImageBackground>
   )
 }
 const styles=StyleSheet.create({
     container:{
         flex:1,
         backgroundColor:'red',
-        width:'100%'
+        width:'100%',
+        justifyContent:'center',
+        alignItems:'center'
+    },
+    buttonText: {
+      color: '#66B2CE',
+      fontSize: 16,
+      fontWeight: 'bold',
+      marginLeft: 10,
+      alignContent: 'center',
+      alignItems: 'center'
     }
 })
 
