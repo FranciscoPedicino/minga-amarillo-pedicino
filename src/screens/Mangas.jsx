@@ -127,7 +127,7 @@ const Mangas = () => {
                         />
                     </ImageBackground>
 
-                    <View style={{ width: '100%', backgroundColor: 'white', height: 900, marginTop: 68, borderTopLeftRadius: 30, borderTopRightRadius: 30, alignItems: 'center' }}>
+                    <View style={{ width: '100%', backgroundColor: 'white', height: 900,  borderTopLeftRadius: 30, borderTopRightRadius: 30, alignItems: 'center' }}>
 
                         {mangas.map((each) => {
                             let category = categories.find((c) => c._id === each.category_id);
@@ -241,8 +241,8 @@ const styles = StyleSheet.create({
     },
     backgroundimage: {
         width: '100%',
-        flex: 1,
-        height: height * 1,
+        flex: 100,
+      height:300,
         alignItems: 'center',
 
 
