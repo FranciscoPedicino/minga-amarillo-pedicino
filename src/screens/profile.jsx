@@ -12,7 +12,7 @@ import apiUrl from "../../api";
 
 
 
-const profile = () => {
+const Profile = () => {
   const navigation = useNavigation()
 
   const [token, setToken] = useState(null);
@@ -74,4 +74,4 @@ const styles=StyleSheet.create({
     }
 })
 
-export default profile
+export default Profile

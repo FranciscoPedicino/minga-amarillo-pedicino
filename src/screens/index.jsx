@@ -14,7 +14,7 @@ import apiUrl from "../../api";
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { useNavigation,useIsFocused } from '@react-navigation/native'
 
-const index = () => {
+const Index = () => {
   const navigation = useNavigation()
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -219,4 +219,4 @@ const styles = StyleSheet.create({
     backgroundColor: 'orange',
   },
 })
-export default index
+export default Index

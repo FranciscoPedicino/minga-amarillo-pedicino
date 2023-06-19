@@ -127,7 +127,7 @@ const Mangas = () => {
                         />
                     </ImageBackground>
 
-                    <View style={{ width: '100%', backgroundColor: 'white', height: 900,  borderTopLeftRadius: 30, borderTopRightRadius: 30, alignItems: 'center' }}>
+                    <View style={{ width: '100%', backgroundColor: 'white', height: 900,  borderTopLeftRadius: 30, borderTopRightRadius: 30, alignItems: 'center',position:'relative',bottom:25 }}>
 
                         {mangas.map((each) => {
                             let category = categories.find((c) => c._id === each.category_id);
